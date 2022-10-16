@@ -1,7 +1,7 @@
 let startButton = document.querySelector('.startButton')
-
 let questionContainer = document.querySelector('.containerHead')
 let answers = document.querySelector('answerButtons')
+let answerBox = document.querySelectorAll('.aButtons')
 
 //equal to undefined to begin with will use these two to randomize questions and keep track of what questions we have
 let randomQuestion
@@ -17,17 +17,27 @@ function startGame() {
     randomQuestion = questions.sort(() => Math.random() - .5)
     currentQuestion = 0
     questionsUp()
+    
 }
 
 function questionsUp() {
     beginQuestions(randomQuestion[currentQuestion])
+    
 
 }
 
+//created a function that shows our questions in our question object down below in our question container
+//Had help from TA getting this to work
 function beginQuestions(question) {
     questionContainer.innerText = question.question
+    question.answers.forEach((answer, i) => {
+        answerBox[i].innerText = answer.a1
+    })
+
+
 }
 
+// probably gonna need to use on click and if statments to check if typeq is == to true or false
 function answerCheck() {
 
 }
@@ -41,31 +51,31 @@ function answerCheck() {
 //easily grab my answers
 const questions = [
     {question: 'What year was the matrix released?',
-    answers: {
-        a: '1998', typeq: true,
-        b: '1997', typeq: false,
-        c: '1999', typeq: false,
-        d: '2000', typeq: false
-    }},
+    answers: [
+        {a1: '1998', typeq: true},
+        {a1: '1997', typeq: false},
+        {a1: '1999', typeq: false},
+        {a1: '2000', typeq: false}
+    ]},
     {question: 'Who said the following: Unfortunately no one can be told what the Matrix is, you have to see it for yourself.',
-    answer: {
-        a: 'Trinity', typeq: false,
-        b: 'Cypher', typeq: false,
-        c: 'Morpheus', typeq: true,
-        d: 'Agent Smith', typeq: false
-    }},
+    answers: [
+        {a1: 'Trinity', typeq: false},
+        {a1: 'Cypher', typeq: false},
+        {a1: 'Morpheus', typeq: true},
+        {a1: 'Agent Smith', typeq: false}
+    ]},
     {question: 'what type of animal does a sentinel look like?',
-    answer: {
-        a: 'Dolphin', typeq: false,
-        b: 'Squid', typeq: true,
-        c:  'Bird', typeq: false,
-        d:  'Snake', typeq: false
-    }},
+    answers: [
+        {a1: 'Dolphin', typeq: false},
+        {a1: 'Squid', typeq: true},
+        {a1:  'Bird', typeq: false},
+        {a1:  'Snake', typeq: false}
+    ]},
     {question: 'what is Neos real name in the movie?',
-    answer: {
-        a: 'Thomas Anderson', typeq: true,
-        b:  'Laurence Fishburne', typeq: false,
-        c: 'Adam Smith', typeq: false,
-        d: 'Hugo Weaving', typeq: false
-    }}
+    answers: [
+        {a1: 'Thomas Anderson', typeq: true},
+        {a1:  'Laurence Fishburne', typeq: false},
+        {a1: 'Adam Smith', typeq: false},
+        {a1: 'Hugo Weaving', typeq: false}
+    ]}
 ]
