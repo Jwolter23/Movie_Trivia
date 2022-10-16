@@ -40,16 +40,15 @@ function beginQuestions(question) {
 }
 
 // probably gonna need to use on click and if statments to check if typeq is == to true or false
-answerBox[i].addEventListener('click',answerCheck)
+// answerBox[i].addEventListener('click',answerCheck)
 function answerCheck() {
     //use a for each to check the typeq if true change background of box to green
     //else change background of box to red use toggle class?
-    question.answers.forEach((typec) => {
-        typec = answers.typeq
-        if (answers.typeq == 'true') {
-            answerBox.classList.toggle = 'green'
+    question.answers.typeq.forEach((typec, i) => {
+        if (typec == 'true') {
+            answerBox[i].classList.toggle = 'green'
 
-        } else answerBox.classList.toggle = 'red'
+        } else answerBox[i].classList.toggle = 'red'
     })
 }
 
