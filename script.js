@@ -23,7 +23,7 @@ function questionsUp() {
 }
 
 function beginQuestions(question) {
-    
+    questionContainer.innerText = question.questions
 }
 
 function answerCheck() {
@@ -44,5 +44,12 @@ const questions = [
         b: '1997', typeq: false,
         c: '1999', typeq: false,
         d: '2000', typeq: false
+    }}
+    {question: 'Who said the following: Unfortunately no one can be told what the Matrix is, you have to see it for yourself.',
+    answer: {
+        a: 'Trinity', typeq: false,
+        b: 'Cypher', typeq: false,
+        c: 'Morpheus', typeq: true,
+        d: 'Agent Smith', typeq: false
     }}
 ]
