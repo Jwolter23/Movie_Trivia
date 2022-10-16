@@ -44,10 +44,14 @@ h1 {
     gap: 20px;
     padding: 20px;
     margin-top: 100px;
+    
 }
 .aButtons{
     background-color: darkolivegreen;
     color: white;
+    height: 30px;
+   
+    
 
 }
 .aButtons:hover{
@@ -55,10 +59,12 @@ h1 {
 }
 .nextButton{
     width: 90px;
-    margin-left: 930px;
-    margin-top: 230px;
+    display: flex;
+    align-items: flex-end;
     background-color: black;
     color: white;
+    margin: 0 0 0 auto;
+    
 
 }
 .nextButton:hover{
