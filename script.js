@@ -3,6 +3,8 @@ let questionContainer = document.querySelector('.containerHead')
 let answers = document.querySelector('answerButtons')
 let answerBox = document.querySelectorAll('.aButtons')
 
+// answerBox[i].addEventListener('click',answerCheck)
+
 //equal to undefined to begin with will use these two to randomize questions and keep track of what questions we have
 let randomQuestion
 let currentQuestion
@@ -38,8 +40,17 @@ function beginQuestions(question) {
 }
 
 // probably gonna need to use on click and if statments to check if typeq is == to true or false
+answerBox[i].addEventListener('click',answerCheck)
 function answerCheck() {
+    //use a for each to check the typeq if true change background of box to green
+    //else change background of box to red use toggle class?
+    question.answers.forEach((typec) => {
+        typec = answers.typeq
+        if (answers.typeq == 'true') {
+            answerBox.classList.toggle = 'green'
 
+        } else answerBox.classList.toggle = 'red'
+    })
 }
 
 
