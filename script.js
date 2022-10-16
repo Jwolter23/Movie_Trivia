@@ -36,7 +36,7 @@ function beginQuestions(question) {
     questionContainer.innerText = question.question
     question.answers.forEach((answer, i) => {
         answerBox[i].innerText = answer.a1
-        answerBox[i].addEventListener('click',answerCheck)
+        // answerBox[i].addEventListener('click',answerCheck)
     })
 
 
@@ -46,15 +46,16 @@ function beginQuestions(question) {
 // answerBox[i].addEventListener('click',answerCheck) added in the above function
 function answerCheck(question) {
    
-    question.answers.forEach((typec, i) => {
-        if (typec == 'true') {
-            console.log(typec.typeq)
-            answerBox[i].classList.toggle = 'green'
+    // question.answers.forEach((typec, i) => {
+    //     if (typec == 'true') {
+    //         console.log(typec.typeq)
+    //         answerBox[i].classList.toggle = 'green'
 
-        } else 
-        answerBox[i].classList.toggle = 'red'
-    })
+    //     } else 
+    //     answerBox[i].classList.toggle = 'red'
+    // })
 }
+
 
 
 
@@ -89,5 +90,48 @@ const questions = [
         {a1:  'Laurence Fishburne', typeq: false},
         {a1: 'Adam Smith', typeq: false},
         {a1: 'Hugo Weaving', typeq: false}
-    ]}
+    ]},
+    {question: 'what color pill does Neo take?',
+    answers: [
+        {a1: 'Blue', typeq: false},
+        {a1:  'None', typeq: false},
+        {a1: 'Red', typeq: true},
+        {a1: 'Purple', typeq: false}
+    ]},
+    {question: 'what is the name of Morpheus ship',
+    answers: [
+        {a1: 'Odyssey', typeq: false},
+        {a1:  'Daedalus', typeq: false},
+        {a1: 'Pleiades', typeq: false},
+        {a1: 'Nebuchadnezzar', typeq: true}
+    ]},
+    {question: 'what is the name the city where free humans live',
+    answers: [
+        {a1: 'Ashencourte', typeq: false},
+        {a1:  'Zion', typeq: true},
+        {a1: 'Widows Moor', typeq: false},
+        {a1: 'Richland', typeq: false}
+    ]},
+    {question: 'what do machines use humans for in the matrix',
+    answers: [
+        {a1: 'Power source', typeq: true},
+        {a1:  'Labor', typeq: false},
+        {a1: 'entertainment', typeq: false},
+        {a1: 'Reproduction', typeq: false}
+    ]},
+    {question: 'what does agent smith comapre humans to?',
+    answers: [
+        {a1: 'Dogs', typeq: false},
+        {a1:  'Ants', typeq: false},
+        {a1: 'Monkeys', typeq: false},
+        {a1: 'Virus', typeq: true}
+    ]},
+    {question: 'How does a freed mind leave the Matrix and return to the real world?',
+    answers: [
+        {a1: 'through cell phone', typeq: false},
+        {a1:  'through a special subway', typeq: false},
+        {a1: 'by phone booth', typeq: true},
+        {a1: 'by ship', typeq: false}
+    ]},
 ]
+
