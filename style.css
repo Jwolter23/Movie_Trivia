@@ -70,3 +70,13 @@ h1 {
 .nextButton:hover{
     background-color: darkred;
 }
+
+.startButton{
+    width: 90px;
+    display: flex;
+    align-items: flex-end;
+    background-color: black;
+    color: white;
+    margin: 0 0 0 auto;
+    
+}
