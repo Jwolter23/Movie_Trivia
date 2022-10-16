@@ -2,9 +2,8 @@ let startButton = document.querySelector('.startButton')
 let questionContainer = document.querySelector('.containerHead')
 let answers = document.querySelector('answerButtons')
 let answerBox = document.querySelectorAll('.aButtons')
-
-// answerBox[i].addEventListener('click',answerCheck)
-
+let nextButton = document.querySelector('.nextButton')
+let score = 0
 //equal to undefined to begin with will use these two to randomize questions and keep track of what questions we have
 let randomQuestion
 let currentQuestion
@@ -27,28 +26,33 @@ function questionsUp() {
     
 
 }
-
+nextButton.addEventListener('click', () => {
+    currentQuestion++
+    questionsUp()
+})
 //created a function that shows our questions in our question object down below in our question container
 //Had help from TA getting this to work
 function beginQuestions(question) {
     questionContainer.innerText = question.question
     question.answers.forEach((answer, i) => {
         answerBox[i].innerText = answer.a1
+        answerBox[i].addEventListener('click',answerCheck)
     })
 
 
 }
 
 // probably gonna need to use on click and if statments to check if typeq is == to true or false
-// answerBox[i].addEventListener('click',answerCheck)
-function answerCheck() {
-    //use a for each to check the typeq if true change background of box to green
-    //else change background of box to red use toggle class?
-    question.answers.typeq.forEach((typec, i) => {
+// answerBox[i].addEventListener('click',answerCheck) added in the above function
+function answerCheck(question) {
+   
+    question.answers.forEach((typec, i) => {
         if (typec == 'true') {
+            console.log(typec.typeq)
             answerBox[i].classList.toggle = 'green'
 
-        } else answerBox[i].classList.toggle = 'red'
+        } else 
+        answerBox[i].classList.toggle = 'red'
     })
 }
 
@@ -57,14 +61,12 @@ function answerCheck() {
 
 
 // our questions will be stored in an object nested within an array 
-// used https://simplestepscode.com/javascript-quiz-tutorial/ as an example as to how to set up nested objects within an array so I could
-//easily grab my answers
 const questions = [
     {question: 'What year was the matrix released?',
     answers: [
-        {a1: '1998', typeq: true},
+        {a1: '1998', typeq: false},
         {a1: '1997', typeq: false},
-        {a1: '1999', typeq: false},
+        {a1: '1999', typeq: true},
         {a1: '2000', typeq: false}
     ]},
     {question: 'Who said the following: Unfortunately no one can be told what the Matrix is, you have to see it for yourself.',
