@@ -3,8 +3,11 @@ let questionContainer = document.querySelector('.containerHead')
 let answers = document.querySelector('answerButtons')
 let answerBox = document.querySelectorAll('.aButtons')
 let nextButton = document.querySelector('.nextButton')
-let e = document.querySelectorAll('.aButtons').value
-let score = document.querySelector('.scoreCounter')
+// let e = document.querySelectorAll('.aButtons').value
+let scoreCounter = document.querySelector('.scoreCounter')
+
+let score = 0
+// let scorePlus = 1
 
 
 //equal to null to begin with will use these two to randomize questions and keep track of what questions we have
@@ -20,7 +23,6 @@ function startGame() {
     console.log('working')
     randomQuestion = questions.sort(() => Math.random() - .5)
     currentQuestion = 0
-    score = 0
     questionsUp()
     
 }
@@ -30,10 +32,15 @@ function questionsUp() {
     
 
 }
+function clearColor() {
+    answerBox.style.backgroundColor = 'darkolivegreen'
+}
 nextButton.addEventListener('click', () => {
     currentQuestion++
     questionsUp()
-    answerBox[i].style.backgroundColor = 'darkolivegreen'
+    clearColor()
+    
+    // answerBox[i].style.backgroundColor = 'darkolivegreen'
 })
 //created a function that shows our questions in our question object down below in our question container
 //Had help from TA getting this to work
@@ -47,20 +54,22 @@ function beginQuestions(question) {
             console.log(answerBox[i].value)
             if (answerBox[i].value == 'true'){
                answerBox[i].style.backgroundColor = 'blue'
-               score++
+               score += 1
+               console.log(score)
+               scoreCounter.innerText = 'Score: '+ score
                 // console.log('true and working')
             } else if (answerBox[i].value == 'false'){
                 answerBox[i].style.backgroundColor = 'red'
                 // console.log('false but working')
             }
             
-
-            
             
         })
     })
 
 }
+
+
 // // probably gonna need to use on click and if statments to check if typeq is == to true or false
 // // answerBox[i].addEventListener('click',answerCheck) added in the above function
 // function answerCheck(question, event) {
