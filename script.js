@@ -4,7 +4,9 @@ let answers = document.querySelector('answerButtons')
 let answerBox = document.querySelectorAll('.aButtons')
 let nextButton = document.querySelector('.nextButton')
 let e = document.querySelectorAll('.aButtons').value
-let score = 0
+let score = document.querySelector('.scoreCounter')
+
+
 //equal to null to begin with will use these two to randomize questions and keep track of what questions we have
 let randomQuestion = null
 let currentQuestion = null
@@ -18,6 +20,7 @@ function startGame() {
     console.log('working')
     randomQuestion = questions.sort(() => Math.random() - .5)
     currentQuestion = 0
+    score = 0
     questionsUp()
     
 }
@@ -30,6 +33,7 @@ function questionsUp() {
 nextButton.addEventListener('click', () => {
     currentQuestion++
     questionsUp()
+    answerBox[i].style.backgroundColor = 'darkolivegreen'
 })
 //created a function that shows our questions in our question object down below in our question container
 //Had help from TA getting this to work
@@ -37,11 +41,21 @@ function beginQuestions(question) {
     questionContainer.innerText = question.question
     question.answers.forEach((answer, i) => {
         answerBox[i].innerText = answer.a1
+        // below gets my console.log to read if a question is true or false
         answerBox[i].value = answer.typeq
-        answerBox[i].addEventListener('click', (e) => {
+        answerBox[i].addEventListener('click', () => {
             console.log(answerBox[i].value)
-        //    e.currentTarget.value = question.answers.typeq
-        //    console.log(e.currentTarget.value)
+            if (answerBox[i].value == 'true'){
+               answerBox[i].style.backgroundColor = 'blue'
+               score++
+                // console.log('true and working')
+            } else if (answerBox[i].value == 'false'){
+                answerBox[i].style.backgroundColor = 'red'
+                // console.log('false but working')
+            }
+            
+
+            
             
         })
     })
@@ -69,6 +83,7 @@ function beginQuestions(question) {
 
 
 // our questions will be stored in an object nested within an array 
+//Had TA help changing a few things around to work
 const questions = [
     {question: 'What year was the matrix released?',
     answers: [

@@ -78,6 +78,10 @@ h1 {
     align-items: center;
     background-color: black;
     color: white;
-  
     
+}
+.scoreCounter{
+    position: absolute;
+    margin-left: 25px;
+    margin-top: 40px;
 }
