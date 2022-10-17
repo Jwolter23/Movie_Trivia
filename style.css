@@ -74,15 +74,10 @@ h1 {
 .startButton{
     width: 90px;
     display: flex;
-    align-items: flex-end;
+    justify-content: center;
+    align-items: center;
     background-color: black;
     color: white;
-    margin: 0 0 0 auto;
+  
     
-}
-.green{
-    background-color: green;
-}
-.red{
-    background-color: red;
 }

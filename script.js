@@ -3,10 +3,11 @@ let questionContainer = document.querySelector('.containerHead')
 let answers = document.querySelector('answerButtons')
 let answerBox = document.querySelectorAll('.aButtons')
 let nextButton = document.querySelector('.nextButton')
+let e = document.querySelectorAll('.aButtons').value
 let score = 0
-//equal to undefined to begin with will use these two to randomize questions and keep track of what questions we have
-let randomQuestion
-let currentQuestion
+//equal to null to begin with will use these two to randomize questions and keep track of what questions we have
+let randomQuestion = null
+let currentQuestion = null
 
 //function will begin the game when the start button is clicked on and begin to roll out questions from our questionUp function
 // used part of stack overflow to see how i can use .sort and random and how -.5 will give it a 50 50 chance
@@ -36,27 +37,33 @@ function beginQuestions(question) {
     questionContainer.innerText = question.question
     question.answers.forEach((answer, i) => {
         answerBox[i].innerText = answer.a1
-        // answerBox[i].addEventListener('click',answerCheck)
+        answerBox[i].value = answer.typeq
+        answerBox[i].addEventListener('click', (e) => {
+            console.log(answerBox[i].value)
+        //    e.currentTarget.value = question.answers.typeq
+        //    console.log(e.currentTarget.value)
+            
+        })
     })
 
-
 }
+// // probably gonna need to use on click and if statments to check if typeq is == to true or false
+// // answerBox[i].addEventListener('click',answerCheck) added in the above function
+// function answerCheck(question, event) {
+//     console.log(question)
+//      // question.answers.typeq.forEach((type) => {
+//      //    if (type == 'true') {
+//      //     console.log(type.typeq)
+//      //    } 
+//      // })
+//  }
 
-// probably gonna need to use on click and if statments to check if typeq is == to true or false
-// answerBox[i].addEventListener('click',answerCheck) added in the above function
-function answerCheck(question) {
-   
-    // question.answers.forEach((typec, i) => {
-    //     if (typec == 'true') {
-    //         console.log(typec.typeq)
-    //         answerBox[i].classList.toggle = 'green'
+// if (type == 'true') {
+//     console.log(type.typeq)
+//     // answerBox[i].classList.toggle = 'green'
 
-    //     } else 
-    //     answerBox[i].classList.toggle = 'red'
-    // })
-}
-
-
+// } else 
+// // answerBox[i].classList.toggle = 'red'
 
 
 
