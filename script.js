@@ -3,11 +3,9 @@ let questionContainer = document.querySelector('.containerHead')
 let answers = document.querySelector('answerButtons')
 let answerBox = document.querySelectorAll('.aButtons')
 let nextButton = document.querySelector('.nextButton')
-// let e = document.querySelectorAll('.aButtons').value
 let scoreCounter = document.querySelector('.scoreCounter')
 
 let score = 0
-// let scorePlus = 1
 
 
 //equal to null to begin with will use these two to randomize questions and keep track of what questions we have
@@ -33,61 +31,42 @@ function questionsUp() {
 
 }
 function clearColor() {
-    answerBox.style.backgroundColor = 'darkolivegreen'
+    answerBox.forEach((element) =>{
+        element.style.backgroundColor='darkolivegreen'
+    })
 }
 nextButton.addEventListener('click', () => {
     currentQuestion++
     questionsUp()
     clearColor()
     
-    // answerBox[i].style.backgroundColor = 'darkolivegreen'
 })
 //created a function that shows our questions in our question object down below in our question container
 //Had help from TA getting this to work
 function beginQuestions(question) {
     questionContainer.innerText = question.question
     question.answers.forEach((answer, i) => {
-        answerBox[i].innerText = answer.a1
-        // below gets my console.log to read if a question is true or false
-        answerBox[i].value = answer.typeq
-        answerBox[i].addEventListener('click', () => {
+        function handleClick(){
+            answerBox[i].removeEventListener('click', handleClick, true)
             console.log(answerBox[i].value)
             if (answerBox[i].value == 'true'){
                answerBox[i].style.backgroundColor = 'blue'
                score += 1
                console.log(score)
-               scoreCounter.innerText = 'Score: '+ score
+               scoreCounter.innerText = 'Score: ' + score + '/55'
                 // console.log('true and working')
             } else if (answerBox[i].value == 'false'){
                 answerBox[i].style.backgroundColor = 'red'
                 // console.log('false but working')
             }
-            
-            
-        })
+        }
+        answerBox[i].innerText = answer.a1
+        // below gets my console.log to read if a question is true or false
+        answerBox[i].value = answer.typeq
+        answerBox[i].addEventListener('click', handleClick  )
     })
 
 }
-
-
-// // probably gonna need to use on click and if statments to check if typeq is == to true or false
-// // answerBox[i].addEventListener('click',answerCheck) added in the above function
-// function answerCheck(question, event) {
-//     console.log(question)
-//      // question.answers.typeq.forEach((type) => {
-//      //    if (type == 'true') {
-//      //     console.log(type.typeq)
-//      //    } 
-//      // })
-//  }
-
-// if (type == 'true') {
-//     console.log(type.typeq)
-//     // answerBox[i].classList.toggle = 'green'
-
-// } else 
-// // answerBox[i].classList.toggle = 'red'
-
 
 
 
