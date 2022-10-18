@@ -13,6 +13,74 @@ h1 {
     background-color: black;
     
   }
+  #matrixhh, #whiteRabbit, #knockKnock {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 40px;
+    position: relative;
+    background-color: black;
+    color: rgba(10, 80, 10, 0.75);
+    margin-top: 40px;
+    width: max-content;
+    
+  }
+  #matrixhh::before,
+  #matrixhh::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+  #matrixhh::before{
+    background: rgb(0, 0, 0);
+    animation: typewriter 4s steps(21) 6s forwards;
+  }
+  #matrixhh::after{
+    width: 0.125em;
+    background: white;
+    animation: typewriter 4s steps(21) 6s forwards,
+    blink 750ms steps(15) infinite;
+  }
+  #whiteRabbit::before,
+  #whiteRabbit::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+  #whiteRabbit::before{
+    background: rgb(0, 0, 0);
+    animation: typewriter 4s steps(23) 11s forwards;
+  }
+  #whiteRabbit::after{
+    width: 0.125em;
+    background: white;
+    animation: typewriter 4s steps(23) 11s forwards,
+    blink 750ms steps(15) infinite;
+  }
+  #knockKnock::before,
+  #knockKnock::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+  #knockKnock::before{
+    background: rgb(0, 0, 0);
+    animation: typewriter 4s steps(17) 15s forwards;
+  }
+  #knockKnock::after{
+    width: 0.125em;
+    background: white;
+    animation: typewriter 4s steps(17) 15s forwards,
+    blink 750ms steps(15) infinite;
+  }
+
   h1::before,
   h1::after{
     content: '';
@@ -49,8 +117,8 @@ h1 {
     display: flex;
     justify-content: center;
     justify-items: center;
-    width: 100vw;
-    height: 100vh;
+    width: 98vw;
+    height: 98vh;
     border: 10px solid rgb(240, 235, 194);
     overflow: hidden;
   }
@@ -115,7 +183,7 @@ h1 {
     color: rgb(5, 5, 5);
     border: none;
     position: absolute;
-    margin-top: 400px;
+    margin-top: 600px;
     font-size: 20px;
     cursor: pointer;
     font-family: 'Matrix', sans-serif;

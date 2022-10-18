@@ -7,6 +7,9 @@ let scoreCounter = document.querySelector('.scoreCounter')
 let gameContainer = document.querySelector('.gameContainer')
 let body = document.querySelector('body')
 let h1 = document.querySelector('h1')
+let matrixHas = document.querySelector('#matrixhh')
+let whiteRabbit = document.querySelector('#whiteRabbit')
+let knock = document.querySelector('#knockKnock')
 let score = []
 let points = 1
 
@@ -23,6 +26,9 @@ function displayAll () {
     body.style.backgroundImage = 'url(https://wallpapercave.com/wp/wp1925260.jpg)'
     body.style.border = 'none'
     h1.style.display = 'none'
+    matrixHas.style.display = 'none'
+    whiteRabbit.style.display = 'none'
+    knock.style.display = 'none'
 }
 //function will begin the game when the start button is clicked on
 // used part of stack overflow to see how i can use .sort and random and how -.5 will give it a 50 50 chance
