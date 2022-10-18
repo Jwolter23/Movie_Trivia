@@ -1,23 +1,33 @@
 let startButton = document.querySelector('.startButton')
 let questionContainer = document.querySelector('.containerHead')
-let answers = document.querySelector('answerButtons')
+let answers = document.querySelector('.answerButtons')
 let answerBox = document.querySelectorAll('.aButtons')
 let nextButton = document.querySelector('.nextButton')
 let scoreCounter = document.querySelector('.scoreCounter')
+let gameContainer = document.querySelector('.gameContainer')
 let score = []
 let points = 1
 
 //equal to null to begin with will use these two to randomize questions and keep track of what questions we have
 let randomQuestion = null
 let currentQuestion = null
-
+//function created to display all properties of the game once start is clicked
+function displayAll () {
+    questionContainer.style.display = 'block'
+    answers.style.display = 'grid'
+    nextButton.style.display = 'block'
+    scoreCounter.style.display = 'block'
+    gameContainer.style.display = 'block'
+}
 //function will begin the game when the start button is clicked on
 // used part of stack overflow to see how i can use .sort and random and how -.5 will give it a 50 50 chance
 //https://stackoverflow.com/questions/53591691/sorting-an-array-in-random-order
 startButton.addEventListener('click', () => {
     startGame()
     startButton.style.display = 'none'
+    displayAll()
 })
+
 
 function startGame() {
     // console.log('working')
