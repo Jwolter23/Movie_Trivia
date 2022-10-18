@@ -4,32 +4,34 @@ let answers = document.querySelector('answerButtons')
 let answerBox = document.querySelectorAll('.aButtons')
 let nextButton = document.querySelector('.nextButton')
 let scoreCounter = document.querySelector('.scoreCounter')
-
-let score = 0
-
+let score = []
+let points = 1
 
 //equal to null to begin with will use these two to randomize questions and keep track of what questions we have
 let randomQuestion = null
 let currentQuestion = null
 
-//function will begin the game when the start button is clicked on and begin to roll out questions from our questionUp function
+//function will begin the game when the start button is clicked on
 // used part of stack overflow to see how i can use .sort and random and how -.5 will give it a 50 50 chance
 //https://stackoverflow.com/questions/53591691/sorting-an-array-in-random-order
-startButton.addEventListener('click', startGame)
+startButton.addEventListener('click', () => {
+    startGame()
+    startButton.style.display = 'none'
+})
 
 function startGame() {
-    console.log('working')
+    // console.log('working')
     randomQuestion = questions.sort(() => Math.random() - .5)
     currentQuestion = 0
     questionsUp()
     
 }
-
+//takes a random question from current question index
 function questionsUp() {
     beginQuestions(randomQuestion[currentQuestion])
     
-
 }
+//simple forEach created to clear the red or blue color when the next button is clicked
 function clearColor() {
     answerBox.forEach((element) =>{
         element.style.backgroundColor='darkolivegreen'
@@ -46,22 +48,28 @@ nextButton.addEventListener('click', () => {
 function beginQuestions(question) {
     questionContainer.innerText = question.question
     question.answers.forEach((answer, i) => {
+        //Attempted to correct score issue with help from TA
         function handleClick(){
             answerBox[i].removeEventListener('click', handleClick, true)
-            console.log(answerBox[i].value)
+            // console.log(answerBox[i].value)
+            //Our below if statment checks if the value of the box clicked on is equal to true or false. If true we turn the box blue indicating a correct answer and red indicating incorrect.
             if (answerBox[i].value == 'true'){
                answerBox[i].style.backgroundColor = 'blue'
-               score += 1
+               //second attempt to fix score issue
+               score.push(parseInt(points))
+               let sum = score.reduce((accumulator, points) => {
+                return accumulator + points 
+               },0)
                console.log(score)
-               scoreCounter.innerText = 'Score: ' + score + '/55'
+               scoreCounter.innerText = 'Score: ' + sum + '/55'
                 // console.log('true and working')
             } else if (answerBox[i].value == 'false'){
                 answerBox[i].style.backgroundColor = 'red'
                 // console.log('false but working')
             }
         }
+        // We use the answerBox[i] as querySelectAll creates an array. Innertext populates our answer boxes while the .value populates the value so we can use an if statment that checks if it is equal to true or false.
         answerBox[i].innerText = answer.a1
-        // below gets my console.log to read if a question is true or false
         answerBox[i].value = answer.typeq
         answerBox[i].addEventListener('click', handleClick  )
     })
