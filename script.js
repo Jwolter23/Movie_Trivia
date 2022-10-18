@@ -17,6 +17,7 @@ let points = 1
 let randomQuestion = null
 let currentQuestion = null
 
+let correctAnswer = false
 //function created to display all properties of the game once start is clicked
 function displayAll () {
     questionContainer.style.display = 'block'
@@ -35,6 +36,17 @@ function displayAll () {
 //function will begin the game when the start button is clicked on
 // used part of stack overflow to see how i can use .sort and random and how -.5 will give it a 50 50 chance
 //https://stackoverflow.com/questions/53591691/sorting-an-array-in-random-order
+function keepScore (points) {
+    if (correctAnswer == true) {
+        score.push(parseInt(points))
+               let sum = score.reduce((accumulator, points) => {
+                return accumulator + points 
+               },0)
+               scoreCounter.innerText = 'Score: ' + sum + '/10'
+            } else return
+        
+}
+
 startButton.addEventListener('click', () => {
     startGame()
     startButton.style.display = 'none'
@@ -43,7 +55,6 @@ startButton.addEventListener('click', () => {
 
 
 function startGame() {
-    // console.log('working')
     randomQuestion = questions.sort(() => Math.random() - .5)
     currentQuestion = 0
     clearColor()
@@ -65,45 +76,36 @@ nextButton.addEventListener('click', () => {
     currentQuestion++
     questionsUp()
     clearColor()
-    
+    keepScore(points)
+    correctAnswer = false
 })
+
 //created a function that shows our questions in our question object down below in our question container
 //Had help from TA getting this to work
 function beginQuestions(question) {
     questionContainer.innerText = question.question
     question.answers.forEach((answer, i) => {
-        //Attempted to correct score issue with help from TA
-        function handleClick(){
-            answerBox[i].removeEventListener('click', handleClick, true)
-            // console.log(answerBox[i].value)
-            //Our below if statment checks if the value of the box clicked on is equal to true or false. If true we turn the box blue indicating a correct answer and red indicating incorrect.
-            if (answerBox[i].value == 'true'){
-               answerBox[i].style.backgroundColor = 'blue'
-               //second attempt to fix score issue
-               score.push(parseInt(points))
-               let sum = score.reduce((accumulator, points) => {
-                return accumulator + points 
-               },0)
-            //    console.log(score)
-               scoreCounter.innerText = 'Score: ' + sum + '/55'
-                // console.log('true and working')
-            } else if (answerBox[i].value == 'false'){
-                answerBox[i].style.backgroundColor = 'red'
-                // console.log('false but working')
-            }
-        }
-        // We use the answerBox[i] as querySelectAll creates an array. Innertext populates our answer boxes while the .value populates the value so we can use an if statment that checks if it is equal to true or false.
         answerBox[i].innerText = answer.a1
         answerBox[i].value = answer.typeq
-        answerBox[i].addEventListener('click', handleClick  )
-    })
+        answerBox[i].addEventListener('click', () => {
+
+    if (answerBox[i].value == 'true'){
+       answerBox[i].style.backgroundColor = 'blue'
+       correctAnswer = true
+    } else if (answerBox[i].value == 'false'){
+        answerBox[i].style.backgroundColor = 'red'
+        console.log(correctAnswer)
+    }
+    
+}) 
+
+})
 
 }
 
 //restarts the game by calling on the start game function to run
 restart.addEventListener('click', () => {
     startGame()
-   
 })
 
 
