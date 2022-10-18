@@ -10,12 +10,13 @@ let h1 = document.querySelector('h1')
 let matrixHas = document.querySelector('#matrixhh')
 let whiteRabbit = document.querySelector('#whiteRabbit')
 let knock = document.querySelector('#knockKnock')
+let restart = document.querySelector('.restart')
 let score = []
 let points = 1
-
 //equal to null to begin with will use these two to randomize questions and keep track of what questions we have
 let randomQuestion = null
 let currentQuestion = null
+
 //function created to display all properties of the game once start is clicked
 function displayAll () {
     questionContainer.style.display = 'block'
@@ -29,6 +30,7 @@ function displayAll () {
     matrixHas.style.display = 'none'
     whiteRabbit.style.display = 'none'
     knock.style.display = 'none'
+    restart.style.display = 'block'
 }
 //function will begin the game when the start button is clicked on
 // used part of stack overflow to see how i can use .sort and random and how -.5 will give it a 50 50 chance
@@ -44,6 +46,7 @@ function startGame() {
     // console.log('working')
     randomQuestion = questions.sort(() => Math.random() - .5)
     currentQuestion = 0
+    clearColor()
     questionsUp()
     
 }
@@ -81,7 +84,7 @@ function beginQuestions(question) {
                let sum = score.reduce((accumulator, points) => {
                 return accumulator + points 
                },0)
-               console.log(score)
+            //    console.log(score)
                scoreCounter.innerText = 'Score: ' + sum + '/55'
                 // console.log('true and working')
             } else if (answerBox[i].value == 'false'){
@@ -97,6 +100,11 @@ function beginQuestions(question) {
 
 }
 
+//restarts the game by calling on the start game function to run
+restart.addEventListener('click', () => {
+    startGame()
+   
+})
 
 
 // our questions will be stored in an object nested within an array 
