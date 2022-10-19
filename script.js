@@ -31,29 +31,29 @@ function displayAll () {
     matrixHas.style.display = 'none'
     whiteRabbit.style.display = 'none'
     knock.style.display = 'none'
-    restart.style.display = 'block'
+    
 }
-//function will begin the game when the start button is clicked on
-// used part of stack overflow to see how i can use .sort and random and how -.5 will give it a 50 50 chance
-//https://stackoverflow.com/questions/53591691/sorting-an-array-in-random-order
+
+
 function keepScore (points) {
     if (correctAnswer == true) {
         score.push(parseInt(points))
                let sum = score.reduce((accumulator, points) => {
                 return accumulator + points 
                },0)
-               scoreCounter.innerText = 'Score: ' + sum + '/10'
+               scoreCounter.innerText = 'Score: ' + sum + '/9'
             } else return
         
 }
-
+//function will begin the game when the start button is clicked on
 startButton.addEventListener('click', () => {
     startGame()
     startButton.style.display = 'none'
     displayAll()
 })
 
-
+// used part of stack overflow to see how i can use .sort and random and how -.5 will give it a 50 50 chance
+//https://stackoverflow.com/questions/53591691/sorting-an-array-in-random-order
 function startGame() {
     randomQuestion = questions.sort(() => Math.random() - .5)
     currentQuestion = 0
@@ -61,6 +61,7 @@ function startGame() {
     questionsUp()
     
 }
+
 //takes a random question from current question index
 function questionsUp() {
     beginQuestions(randomQuestion[currentQuestion])
@@ -69,17 +70,25 @@ function questionsUp() {
 //simple forEach created to clear the red or blue color when the next button is clicked
 function clearColor() {
     answerBox.forEach((element) =>{
-        element.style.backgroundColor='darkolivegreen'
+        element.style.backgroundColor='black'
     })
 }
 nextButton.addEventListener('click', () => {
+    endAlert()
     currentQuestion++
     questionsUp()
     clearColor()
     keepScore(points)
     correctAnswer = false
+    
+    
 })
-
+function endAlert () {
+    if (currentQuestion == 9) {
+        alert('Great Game reset below')
+        restart.style.display = 'block'
+    }
+}
 //created a function that shows our questions in our question object down below in our question container
 //Had help from TA getting this to work
 function beginQuestions(question) {
@@ -90,11 +99,10 @@ function beginQuestions(question) {
         answerBox[i].addEventListener('click', () => {
 
     if (answerBox[i].value == 'true'){
-       answerBox[i].style.backgroundColor = 'blue'
+       answerBox[i].style.backgroundColor = 'green'
        correctAnswer = true
     } else if (answerBox[i].value == 'false'){
         answerBox[i].style.backgroundColor = 'red'
-        console.log(correctAnswer)
     }
     
 }) 
@@ -105,7 +113,7 @@ function beginQuestions(question) {
 
 //restarts the game by calling on the start game function to run
 restart.addEventListener('click', () => {
-    startGame()
+    document.location.reload(true)
 })
 
 
