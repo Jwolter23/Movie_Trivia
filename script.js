@@ -11,6 +11,7 @@ let matrixHas = document.querySelector('#matrixhh')
 let whiteRabbit = document.querySelector('#whiteRabbit')
 let knock = document.querySelector('#knockKnock')
 let restart = document.querySelector('.restart')
+let lightMode = document.querySelector('.lightMode')
 let score = []
 let points = 1
 //equal to null to begin with will use these two to randomize questions and keep track of what questions we have
@@ -31,9 +32,15 @@ function displayAll () {
     matrixHas.style.display = 'none'
     whiteRabbit.style.display = 'none'
     knock.style.display = 'none'
+    lightMode.style.display = 'block'
     
 }
-
+//light mode / dark mode
+lightMode.addEventListener('click', () => {
+    gameContainer.classList.toggle('white') 
+    questionContainer.classList.toggle('black') 
+    answerBox[i].classList.toggle('orange')
+})
 
 function keepScore (points) {
     if (correctAnswer == true) {
@@ -58,15 +65,9 @@ function startGame() {
     randomQuestion = questions.sort(() => Math.random() - .5)
     currentQuestion = 0
     clearColor()
-    questionsUp()
-    
+    questionsUp()   
 }
 
-//takes a random question from current question index
-function questionsUp() {
-    beginQuestions(randomQuestion[currentQuestion])
-    
-}
 //simple forEach created to clear the red or blue color when the next button is clicked
 function clearColor() {
     answerBox.forEach((element) =>{
@@ -83,21 +84,16 @@ nextButton.addEventListener('click', () => {
     
     
 })
-function endAlert () {
-    if (currentQuestion == 9) {
-        alert('Great Game reset below')
-        restart.style.display = 'block'
-    }
-}
-//created a function that shows our questions in our question object down below in our question container
+
+
 //Had help from TA getting this to work
+//getting our questions to show from our nested object within an array 
 function beginQuestions(question) {
     questionContainer.innerText = question.question
     question.answers.forEach((answer, i) => {
         answerBox[i].innerText = answer.a1
         answerBox[i].value = answer.typeq
         answerBox[i].addEventListener('click', () => {
-
     if (answerBox[i].value == 'true'){
        answerBox[i].style.backgroundColor = 'green'
        correctAnswer = true
@@ -111,6 +107,17 @@ function beginQuestions(question) {
 
 }
 
+//takes a random question from current question index to get our next question lined up
+function questionsUp() {
+    beginQuestions(randomQuestion[currentQuestion])  
+}
+
+function endAlert () {
+    if (currentQuestion == 9) {
+        alert('Great Game reset below')
+        restart.style.display = 'block'
+    }
+}
 //restarts the game by calling on the start game function to run
 restart.addEventListener('click', () => {
     document.location.reload(true)
