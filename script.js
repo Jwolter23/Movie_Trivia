@@ -151,7 +151,7 @@ function endAlert () {
 
 //used to show which question were on
 function showQ () {
-    questionCounter.innerText = 'Question: ' + currentQuestion + '/15'
+    questionCounter.innerText = 'Question: ' + currentQuestion  + ' /15'
 }
 
 //restarts the game by calling on the start game function to run
