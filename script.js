@@ -12,6 +12,7 @@ let whiteRabbit = document.querySelector('#whiteRabbit')
 let knock = document.querySelector('#knockKnock')
 let restart = document.querySelector('.restart')
 let lightMode = document.querySelector('.lightMode')
+let questionCounter = document.querySelector('.questionCounter')
 // let boolVal = true
 let score = []
 let points = 1
@@ -34,6 +35,7 @@ function displayAll () {
     whiteRabbit.style.display = 'none'
     knock.style.display = 'none'
     lightMode.style.display = 'block'
+    questionCounter.style.display = 'block'
     
 }
 //light mode / dark mode

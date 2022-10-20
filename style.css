@@ -135,6 +135,7 @@ h1 {
     border-radius: 35px;
     display: none;
     border: 2px solid green;
+    
 }
 
 .containerHead{
@@ -163,7 +164,10 @@ h1 {
     color: rgb(255, 255, 255);
     height: 30px;
     cursor: pointer;
-
+    font-family: 'Matrix', sans-serif;
+}
+.aButtons:hover{
+  background-color: darkslategray;
 }
 
 
@@ -173,15 +177,15 @@ h1 {
     align-items: flex-end;
     background-color: black;
     color: white;
-    margin: 85px 0 0 auto;
+    margin: 85px 0 auto auto;
     margin-right: 25px;
     border: 1px solid green;
-    
+    font-family: 'Matrix', sans-serif;
     
 
 }
 .nextButton:hover{
-    background-color: green;
+    background-color: darkslategray;
     cursor: pointer;
     
 }
@@ -237,6 +241,14 @@ h1 {
     color: green;
     border: 1px solid green;
     cursor: pointer;
+}
+.questionCounter{
+  display: flex;
+  align-items: flex-end;
+  margin: 0 0 0 21px;
+  margin-top: 40px;
+    display: none;  
+    color: green;
 }
 .grey{
     border: 3px solid rgb(115, 223, 209);
