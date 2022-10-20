@@ -12,6 +12,7 @@ let whiteRabbit = document.querySelector('#whiteRabbit')
 let knock = document.querySelector('#knockKnock')
 let restart = document.querySelector('.restart')
 let lightMode = document.querySelector('.lightMode')
+// let boolVal = true
 let score = []
 let points = 1
 //equal to null to begin with will use these two to randomize questions and keep track of what questions we have
@@ -37,10 +38,18 @@ function displayAll () {
 }
 //light mode / dark mode
 lightMode.addEventListener('click', () => {
+    // boolVal = !boolVal
     gameContainer.classList.toggle('white') 
-    questionContainer.classList.toggle('black') 
-    answerBox[i].classList.toggle('orange')
+    questionContainer.classList.toggle('black')
+    scoreCounter.classList.toggle('black')
+    nextButton.classList.toggle('grey')
+    answerBox[0].classList.toggle('grey')
+    answerBox[1].classList.toggle('grey')
+    answerBox[2].classList.toggle('grey')
+    answerBox[3].classList.toggle('grey')
 })
+
+
 
 function keepScore (points) {
     if (correctAnswer == true) {
@@ -64,16 +73,16 @@ startButton.addEventListener('click', () => {
 function startGame() {
     randomQuestion = questions.sort(() => Math.random() - .5)
     currentQuestion = 0
-    clearColor()
     questionsUp()   
 }
 
 //simple forEach created to clear the red or blue color when the next button is clicked
 function clearColor() {
     answerBox.forEach((element) =>{
-        element.style.backgroundColor='black'
+     element.style.backgroundColor='black'
     })
 }
+
 nextButton.addEventListener('click', () => {
     endAlert()
     currentQuestion++
@@ -81,7 +90,6 @@ nextButton.addEventListener('click', () => {
     clearColor()
     keepScore(points)
     correctAnswer = false
-    
     
 })
 
