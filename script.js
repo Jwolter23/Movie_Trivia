@@ -143,7 +143,7 @@ function questionsUp() {
 
 //used to have our alert pop up at the end of a game
 function endAlert () {
-    if (currentQuestion == 14) {
+    if (currentQuestion == 15) {
         alert(`Great game, you had a ${scoreCounter.innerText}, reset below!`)
         restart.style.display = 'block'
     }
@@ -151,7 +151,7 @@ function endAlert () {
 
 //used to show which question were on
 function showQ () {
-    questionCounter.innerText = 'Question: ' + currentQuestion + '/14'
+    questionCounter.innerText = 'Question: ' + currentQuestion + '/15'
 }
 
 //restarts the game by calling on the start game function to run
@@ -269,6 +269,13 @@ const questions = [
         {a1:  'Christian Bale', typeq: false},
         {a1: 'Tom Hanks', typeq: false},
         {a1: 'Will Smith', typeq: true}
+    ]},
+    {question: 'How many previous versions of the matrix were there?',
+    answers: [
+        {a1: 'Five', typeq: true},
+        {a1:  'Three', typeq: false},
+        {a1: 'Fifteen', typeq: false},
+        {a1: 'Infinite', typeq: false}
     ]},
 ]
 
