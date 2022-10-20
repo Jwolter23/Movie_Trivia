@@ -48,8 +48,19 @@ lightMode.addEventListener('click', () => {
     answerBox[2].classList.toggle('grey')
     answerBox[3].classList.toggle('grey')
 })
-
-
+//disables the buttons after one click so answer cant be changed
+function clickOne () {
+    answerBox.forEach((element) => {
+        element.disabled = true
+    })
+    
+}
+//reenables the use of buttons everytime next button is clicked
+function clearClick () {
+    answerBox.forEach((element) => {
+        element.disabled = false
+    })
+}
 
 function keepScore (points) {
     if (correctAnswer == true) {
@@ -90,6 +101,7 @@ nextButton.addEventListener('click', () => {
     clearColor()
     keepScore(points)
     correctAnswer = false
+    clearClick()
     
 })
 
@@ -105,8 +117,10 @@ function beginQuestions(question) {
     if (answerBox[i].value == 'true'){
        answerBox[i].style.backgroundColor = 'green'
        correctAnswer = true
+       clickOne()
     } else if (answerBox[i].value == 'false'){
         answerBox[i].style.backgroundColor = 'red'
+        clickOne()
     }
     
 }) 
