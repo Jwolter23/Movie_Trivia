@@ -44,6 +44,7 @@ lightMode.addEventListener('click', () => {
     questionContainer.classList.toggle('black')
     scoreCounter.classList.toggle('black')
     nextButton.classList.toggle('grey')
+    restart.classList.toggle('grey')
     questionCounter.classList.toggle('black')
     answerBox[0].classList.toggle('grey')
     answerBox[1].classList.toggle('grey')

@@ -222,13 +222,15 @@ h1 {
     color: green;
 }
 .restart{
-    width: 90px;
+    width: 100px;
     display: flex;
     justify-content:flex-start;
     background-color: black;
     color: white;
-    margin-left: 25px;
-    margin-top: 80px;
+    margin-left: 500px;
+    margin-bottom: 120px;
+    font-size: 20px;
+    /* margin-top: 80px; */
     display: none;
     border: 1px solid green;
 }
