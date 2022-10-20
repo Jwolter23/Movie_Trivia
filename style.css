@@ -245,7 +245,7 @@ h1 {
 }
 .white{
     background-color: white;
-    border-color: black;
+    border: 3px solid rgb(115, 223, 209)
 }
 .black{
     color: rgb(0, 0, 0);
