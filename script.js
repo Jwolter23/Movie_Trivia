@@ -13,14 +13,14 @@ let knock = document.querySelector('#knockKnock')
 let restart = document.querySelector('.restart')
 let lightMode = document.querySelector('.lightMode')
 let questionCounter = document.querySelector('.questionCounter')
-// let boolVal = true
 let score = []
 let points = 1
+
 //equal to null to begin with will use these two to randomize questions and keep track of what questions we have
 let randomQuestion = null
 let currentQuestion = null
-
 let correctAnswer = false
+
 //function created to display all properties of the game once start is clicked
 function displayAll () {
     questionContainer.style.display = 'block'
@@ -36,27 +36,28 @@ function displayAll () {
     knock.style.display = 'none'
     lightMode.style.display = 'block'
     questionCounter.style.display = 'block'
-    
 }
-//light mode / dark mode
+
+//light mode / dark mode on click
 lightMode.addEventListener('click', () => {
-    // boolVal = !boolVal
     gameContainer.classList.toggle('white') 
     questionContainer.classList.toggle('black')
     scoreCounter.classList.toggle('black')
     nextButton.classList.toggle('grey')
+    questionCounter.classList.toggle('black')
     answerBox[0].classList.toggle('grey')
     answerBox[1].classList.toggle('grey')
     answerBox[2].classList.toggle('grey')
     answerBox[3].classList.toggle('grey')
 })
+
 //disables the buttons after one click so answer cant be changed
 function clickOne () {
     answerBox.forEach((element) => {
         element.disabled = true
     })
-    
 }
+
 //reenables the use of buttons everytime next button is clicked
 function clearClick () {
     answerBox.forEach((element) => {
@@ -64,6 +65,7 @@ function clearClick () {
     })
 }
 
+//function to push our score into an empty array using points preset to 1
 function keepScore (points) {
     if (correctAnswer == true) {
         score.push(parseInt(points))
@@ -72,8 +74,8 @@ function keepScore (points) {
                },0)
                scoreCounter.innerText = 'Score: ' + sum 
             } else return
-        
 }
+
 //function will begin the game when the start button is clicked on
 startButton.addEventListener('click', () => {
     startGame()
@@ -88,7 +90,6 @@ function startGame() {
     currentQuestion = 0
     questionsUp() 
     showQ()
-   
 }
 
 //simple forEach created to clear the red or blue color when the next button is clicked
@@ -107,9 +108,7 @@ nextButton.addEventListener('click', () => {
     correctAnswer = false
     clearClick()
     showQ()
-    
 })
-
 
 //Had help from TA getting this to work
 //getting our questions to show from our nested object within an array 
@@ -135,9 +134,12 @@ function beginQuestions(question) {
 }
 
 //takes a random question from current question index to get our next question lined up
+//https://www.codeproject.com/Questions/5309542/How-can-I-make-random-question-appear
+// link helped me properly set up randomQuestion and the current question index
 function questionsUp() {
     beginQuestions(randomQuestion[currentQuestion])  
 }
+
 //used to have our alert pop up at the end of a game
 function endAlert () {
     if (currentQuestion == 14) {
@@ -145,18 +147,22 @@ function endAlert () {
         restart.style.display = 'block'
     }
 }
+
 //used to show which question were on
 function showQ () {
     questionCounter.innerText = 'Question: ' + currentQuestion + '/14'
 }
+
 //restarts the game by calling on the start game function to run
 restart.addEventListener('click', () => {
     document.location.reload(true)
 })
 
-
 // our questions will be stored in an object nested within an array 
 //Had TA help changing a few things around to work
+//https://www.ultimatequizquestions.com/matrix-quiz/
+//https://www.usefultrivia.com/movie_trivia/matrix_trivia.html
+//question ideas from the above links
 const questions = [
     {question: 'What year was the matrix released?',
     answers: [
