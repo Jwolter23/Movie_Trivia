@@ -143,7 +143,7 @@ function questionsUp() {
 //used to have our alert pop up at the end of a game
 function endAlert () {
     if (currentQuestion == 14) {
-        alert('Great Game reset below')
+        alert(`Great game, you had a ${scoreCounter.innerText}, reset below!`)
         restart.style.display = 'block'
     }
 }

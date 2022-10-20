@@ -122,7 +122,7 @@ h1 {
     display: flex;
     justify-content: center;
     justify-items: center;
-    width: 98vw;
+    width: 98.5vw;
     height: 98vh;
     border: 10px solid rgb(240, 235, 194);
     overflow: hidden;
