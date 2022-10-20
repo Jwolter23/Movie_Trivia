@@ -124,6 +124,8 @@ h1 {
     height: 98vh;
     border: 10px solid rgb(240, 235, 194);
     overflow: hidden;
+    padding-right: 0;
+    margin-right: 0;
   }
   
 .gameContainer{

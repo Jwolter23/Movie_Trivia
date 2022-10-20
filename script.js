@@ -70,7 +70,7 @@ function keepScore (points) {
                let sum = score.reduce((accumulator, points) => {
                 return accumulator + points 
                },0)
-               scoreCounter.innerText = 'Score: ' + sum + '/9'
+               scoreCounter.innerText = 'Score: ' + sum 
             } else return
         
 }
@@ -86,7 +86,9 @@ startButton.addEventListener('click', () => {
 function startGame() {
     randomQuestion = questions.sort(() => Math.random() - .5)
     currentQuestion = 0
-    questionsUp()   
+    questionsUp() 
+    showQ()
+   
 }
 
 //simple forEach created to clear the red or blue color when the next button is clicked
@@ -104,6 +106,7 @@ nextButton.addEventListener('click', () => {
     keepScore(points)
     correctAnswer = false
     clearClick()
+    showQ()
     
 })
 
@@ -135,12 +138,16 @@ function beginQuestions(question) {
 function questionsUp() {
     beginQuestions(randomQuestion[currentQuestion])  
 }
-
+//used to have our alert pop up at the end of a game
 function endAlert () {
-    if (currentQuestion == 9) {
+    if (currentQuestion == 14) {
         alert('Great Game reset below')
         restart.style.display = 'block'
     }
+}
+//used to show which question were on
+function showQ () {
+    questionCounter.innerText = 'Question: ' + currentQuestion + '/14'
 }
 //restarts the game by calling on the start game function to run
 restart.addEventListener('click', () => {
@@ -220,6 +227,41 @@ const questions = [
         {a1:  'through a special subway', typeq: false},
         {a1: 'by phone booth', typeq: true},
         {a1: 'by ship', typeq: false}
+    ]},
+    {question: 'what was Neos occupation before he left the Matrix?',
+    answers: [
+        {a1: 'Computer Engineer', typeq: false},
+        {a1:  'Software Developer', typeq: true},
+        {a1: 'IT help desk', typeq: false},
+        {a1: 'Back-end Developer', typeq: false}
+    ]},
+    {question: 'to get to the source of the Matrix Neo must find what?',
+    answers: [
+        {a1: 'The Keymaker', typeq: true},
+        {a1:  'Himself', typeq: false},
+        {a1: 'Trinity', typeq: false},
+        {a1: 'Mouse', typeq: false}
+    ]},
+    {question: 'Where was the first Matrix filmed?',
+    answers: [
+        {a1: 'London, England', typeq: false},
+        {a1:  'Seattle, Washington', typeq: false},
+        {a1: 'Los Angeles, California', typeq: false},
+        {a1: 'Sydney, Australia', typeq: true}
+    ]},
+    {question: 'What was the budget for the first Matrix film?',
+    answers: [
+        {a1: 'about $50 million', typeq: false},
+        {a1:  'about $60 million', typeq: true},
+        {a1: 'about $75 million', typeq: false},
+        {a1: 'about $102 million', typeq: false}
+    ]},
+    {question: 'Who turned down the part of Neo?',
+    answers: [
+        {a1: 'Brad Pitt', typeq: false},
+        {a1:  'Christian Bale', typeq: false},
+        {a1: 'Tom Hanks', typeq: false},
+        {a1: 'Will Smith', typeq: true}
     ]},
 ]
 
