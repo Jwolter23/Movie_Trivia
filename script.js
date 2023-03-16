@@ -15,7 +15,7 @@ let lightMode = document.querySelector('.lightMode')
 let questionCounter = document.querySelector('.questionCounter')
 let score = []
 let points = 1
-
+boolVal = true
 //equal to null to begin with will use these two to randomize questions and keep track of what questions we have
 let randomQuestion = null
 let currentQuestion = null
@@ -38,8 +38,10 @@ function displayAll () {
     questionCounter.style.display = 'block'
 }
 
-//light mode / dark mode on click
+//light mode / dark mode functionality added when clicked
 lightMode.addEventListener('click', () => {
+    boolVal = !boolVal
+    console.log(boolVal)
     gameContainer.classList.toggle('white') 
     questionContainer.classList.toggle('black')
     scoreCounter.classList.toggle('black')
